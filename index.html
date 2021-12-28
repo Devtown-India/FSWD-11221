@@ -1,39 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to CSS</title>
+    <title>Web</title>
     <style>
         * {
-            margin: 0;
             padding: 0;
+            margin: 0;
             box-sizing: border-box;
         }
         
-        div.child {
-            width: 200px;
-            height: 200px;
+        div.parent {
+            width: 50vw;
+            height: 50vw;
             background-color: #ffbf00;
+            position: absolute;
         }
         
-        div.parent {
-            width: 200px;
-            height: 200px;
+        div.child {
+            width: 100px;
+            height: 100px;
             background-color: blueviolet;
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
+            position: absolute;
+            bottom: 40px;
+            right: 50px;
+        }
+        
+        div.grand-child {
+            width: 60px;
+            height: 60px;
+            background-color: cyan;
+            margin: 20px;
         }
     </style>
 </head>
 
 <body>
-    <div class="child"></div>
-
-    <div class="parent"></div>
+    <div class="parent">
+        <div class="child">
+            <div class="grand-child"></div>
+        </div>
+    </div>
 </body>
 
 </html>
