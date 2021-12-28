@@ -7,38 +7,71 @@
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+            font-family: Metropolis;
         }
         
-        div.parent {
-            width: 50vw;
-            height: 50vw;
-            background-color: #ffbf00;
+        div.card {
+            margin: 30px;
+            width: 350px;
+            height: 450px;
+            position: relative;
+            background-color: #f1f1f1;
+        }
+        
+        header img {
+            width: 100%;
+        }
+        
+        div.icon {
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            background-color: crimson;
+            opacity: 0.9;
+            font-size: 25px;
+            text-align: center;
+            border-radius: 50%;
             position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 5px solid #f1f1f1;
         }
         
-        div.child {
-            width: 100px;
-            height: 100px;
-            background-color: blueviolet;
-            position: absolute;
-            bottom: 40px;
-            right: 50px;
+        div.card section {
+            text-align: center;
         }
         
-        div.grand-child {
-            width: 60px;
-            height: 60px;
-            background-color: cyan;
-            margin: 20px;
+        div.card section h2 {
+            margin-top: 20px;
+            color: blueviolet;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        
+        div.card section button {
+            font-size: 15px;
+            outline: none;
+            border: 2px solid dodgerblue;
+            background-color: dodgerblue;
+            border-radius: 10px;
+            color: #f1f1f1;
+            padding: 10px 20px;
+            position: relative;
+            top: 25px;
         }
     </style>
 </head>
 
 <body>
-    <div class="parent">
-        <div class="child">
-            <div class="grand-child"></div>
-        </div>
+    <div class="card">
+        <header>
+            <img src="https://material-cards.s3-eu-west-1.amazonaws.com/thumb-dustin-hoffman.jpg" alt="" />
+        </header>
+        <section>
+            <h2>Dustin Hoffman</h2>
+            <button>Read More</button>
+        </section>
+        <div class="icon">?</div>
     </div>
 </body>
 
