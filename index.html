@@ -1,77 +1,101 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Web</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Card</title>
     <style>
         * {
-            padding: 0;
-            margin: 0;
+            margin: 0px;
+            padding: 0px;
             box-sizing: border-box;
-            font-family: Metropolis;
+            font-family: sans-serif;
+            border: none;
         }
         
         div.card {
-            margin: 30px;
-            width: 350px;
-            height: 450px;
+            margin-left: 28px;
+            margin-top: 40px;
+            border: 2px solid crimson;
             position: relative;
-            background-color: #f1f1f1;
+            width: 253px;
+            height: 320px;
+            background-color: rgb(250, 215, 215);
         }
         
-        header img {
-            width: 100%;
+        div.card section.parent h1 {
+            position: relative;
+            top: 35px;
+            color: crimson;
+            padding: 5px 25px;
+            border-left: 5px solid crimson;
         }
         
         div.icon {
-            color: #fff;
-            width: 40px;
-            height: 40px;
+            text-align: center;
+            padding-top: 18px;
             background-color: crimson;
-            opacity: 0.9;
-            font-size: 25px;
-            text-align: center;
             border-radius: 50%;
+            width: 70px;
+            height: 70px;
             position: absolute;
-            top: 20px;
-            right: 20px;
-            border: 5px solid #f1f1f1;
+            right: -35px;
         }
         
-        div.card section {
-            text-align: center;
+        div.card section.parent form {
+            margin-top: 70px;
         }
         
-        div.card section h2 {
-            margin-top: 20px;
-            color: blueviolet;
-            font-size: 30px;
-            font-weight: 700;
-        }
-        
-        div.card section button {
+        div.card section.parent input {
+            width: 180px;
+            margin: 10px auto;
+            display: block;
+            padding: 10px;
             font-size: 15px;
-            outline: none;
-            border: 2px solid dodgerblue;
-            background-color: dodgerblue;
-            border-radius: 10px;
-            color: #f1f1f1;
-            padding: 10px 20px;
+            border-bottom: 2px solid #ffbf00;
+        }
+        
+        div.card section.parent button {
+            width: 100px;
+            height: 30px;
+            /* left: 65px; */
+            margin: 10px auto 5px;
+            display: block;
+            font-weight: 600;
+            border: 2px solid rgb(206, 112, 36);
+            color: rgb(56, 51, 51);
+        }
+        
+        div.card section.parent section a {
+            text-align: center;
+            font-size: 15px;
+            margin: 30px;
             position: relative;
-            top: 25px;
+            top: 30px;
+            left: 30px;
         }
     </style>
 </head>
 
 <body>
+    <!-- <div class="card_bg"></div> -->
     <div class="card">
-        <header>
-            <img src="https://material-cards.s3-eu-west-1.amazonaws.com/thumb-dustin-hoffman.jpg" alt="" />
-        </header>
-        <section>
-            <h2>Dustin Hoffman</h2>
-            <button>Read More</button>
+        <section class="parent">
+            <h1>LOGIN</h1>
+            <div class="icon">
+                <img width="30px" src="https://www.svgrepo.com/show/34351/edit.svg" />
+            </div>
+            <form>
+                <input type="text" placeholder="Username" />
+                <input type="password" placeholder="Password" />
+                <button>GO</button>
+                <section>
+                    <a href="#">Forgot password?</a>
+                </section>
+            </form>
         </section>
-        <div class="icon">?</div>
     </div>
 </body>
 
