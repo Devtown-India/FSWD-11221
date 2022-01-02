@@ -5,97 +5,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Card</title>
+    <title>CSS</title>
+
     <style>
+        body {
+            background-color: #111;
+        }
+        
         * {
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            font-family: sans-serif;
-            border: none;
+            font-family: Metropolis;
         }
         
-        div.card {
-            margin-left: 28px;
-            margin-top: 40px;
-            border: 2px solid crimson;
-            position: relative;
-            width: 253px;
-            height: 320px;
-            background-color: rgb(250, 215, 215);
-        }
-        
-        div.card section.parent h1 {
-            position: relative;
-            top: 35px;
-            color: crimson;
-            padding: 5px 25px;
-            border-left: 5px solid crimson;
-        }
-        
-        div.icon {
-            text-align: center;
-            padding-top: 18px;
-            background-color: crimson;
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            position: absolute;
-            right: -35px;
-        }
-        
-        div.card section.parent form {
-            margin-top: 70px;
-        }
-        
-        div.card section.parent input {
-            width: 180px;
-            margin: 10px auto;
-            display: block;
-            padding: 10px;
-            font-size: 15px;
-            border-bottom: 2px solid #ffbf00;
-        }
-        
-        div.card section.parent button {
-            width: 100px;
-            height: 30px;
-            /* left: 65px; */
-            margin: 10px auto 5px;
-            display: block;
-            font-weight: 600;
-            border: 2px solid rgb(206, 112, 36);
-            color: rgb(56, 51, 51);
-        }
-        
-        div.card section.parent section a {
-            text-align: center;
-            font-size: 15px;
+        div.parent {
             margin: 30px;
-            position: relative;
-            top: 30px;
-            left: 30px;
+            padding: 5px;
+            min-height: 350px;
+            background-color: #ffbf00;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        div.child {
+            margin: 10px;
+            height: 200px;
+            width: 100px;
+            background-color: blueviolet;
         }
     </style>
 </head>
 
 <body>
-    <!-- <div class="card_bg"></div> -->
-    <div class="card">
-        <section class="parent">
-            <h1>LOGIN</h1>
-            <div class="icon">
-                <img width="30px" src="https://www.svgrepo.com/show/34351/edit.svg" />
-            </div>
-            <form>
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
-                <button>GO</button>
-                <section>
-                    <a href="#">Forgot password?</a>
-                </section>
-            </form>
-        </section>
+    <div class="parent">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
     </div>
 </body>
 
