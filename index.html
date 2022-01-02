@@ -14,69 +14,43 @@
             font-family: Metropolis;
         }
         
-        button {
-            background-color: blueviolet;
-            border: none;
-            padding: 15px;
-            color: #f1f1f1;
-            border-radius: 10px;
-            margin: 20px;
+        div.parent {
+            background-color: black;
+            height: 500px;
         }
         
-        button#first:hover {
-            cursor: pointer;
-            background-color: rgba(137, 43, 226, 0.859);
-        }
-        
-        input:focus {
-            border: 10px solid #f1f1f1;
-            background-color: blueviolet;
-        }
-        
-        input:hover {
-            margin-left: 40px;
-            cursor: wait;
-        }
-        
-        div::selection {
+        div.child-1 {
+            margin: 50px;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
             background-color: #ffbf00;
+            transition-duration: 1s;
+            transition-timing-function: cubic-bezier(0.09, -2.12, 0, 1.83);
         }
         
-        h2 {
-            margin: 20px;
-            position: relative;
-            width: 200px;
-        }
-        
-        h2::after {
-            content: " ";
-            position: absolute;
-            transition: 0.4s ease;
-            width: 0;
-            height: 5px;
+        div.child-2 {
+            margin: 50px;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
             background-color: #ffbf00;
-            bottom: 0;
-            left: 0;
+            transition-duration: 1s;
+            transition-timing-function: ease-in;
         }
         
-        h2:hover::after {
-            width: 100%;
-            transform: rotate(-5deg);
-            background-color: blueviolet;
+        div.parent:hover div.child-1,
+        div.parent:hover div.child-2 {
+            transform: translateX(500px);
         }
     </style>
 </head>
 
 <body>
-    <h2>I'm a heading</h2>
-
-    <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, porro, sapiente tenetur sunt alias neque voluptatem nobis ratione saepe quia sed eveniet dolores ad quod! Cum reiciendis dolorum non et. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Voluptatem inventore corrupti quae officiis architecto animi dolorem mollitia nisi magnam sed optio dolore nihil labore eos, modi minima, ut suscipit rem.
+    <div class="parent">
+        <div class="child-1"></div>
+        <!-- <div class="child-2"></div> -->
     </div>
-
-    <button id="first">Click</button>
-    <input type="text" />
 </body>
 
 </html>
