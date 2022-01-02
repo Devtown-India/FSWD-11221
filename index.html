@@ -5,13 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CSS</title>
-
+    <title>Document</title>
     <style>
-        body {
-            background-color: #111;
-        }
-        
         * {
             margin: 0;
             padding: 0;
@@ -19,32 +14,69 @@
             font-family: Metropolis;
         }
         
-        div.parent {
-            margin: 30px;
-            padding: 5px;
-            min-height: 350px;
-            background-color: #ffbf00;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
+        button {
+            background-color: blueviolet;
+            border: none;
+            padding: 15px;
+            color: #f1f1f1;
+            border-radius: 10px;
+            margin: 20px;
         }
         
-        div.child {
-            margin: 10px;
-            height: 200px;
-            width: 100px;
+        button#first:hover {
+            cursor: pointer;
+            background-color: rgba(137, 43, 226, 0.859);
+        }
+        
+        input:focus {
+            border: 10px solid #f1f1f1;
+            background-color: blueviolet;
+        }
+        
+        input:hover {
+            margin-left: 40px;
+            cursor: wait;
+        }
+        
+        div::selection {
+            background-color: #ffbf00;
+        }
+        
+        h2 {
+            margin: 20px;
+            position: relative;
+            width: 200px;
+        }
+        
+        h2::after {
+            content: " ";
+            position: absolute;
+            transition: 0.4s ease;
+            width: 0;
+            height: 5px;
+            background-color: #ffbf00;
+            bottom: 0;
+            left: 0;
+        }
+        
+        h2:hover::after {
+            width: 100%;
+            transform: rotate(-5deg);
             background-color: blueviolet;
         }
     </style>
 </head>
 
 <body>
-    <div class="parent">
-        <div class="child"></div>
-        <div class="child"></div>
-        <div class="child"></div>
-        <div class="child"></div>
+    <h2>I'm a heading</h2>
+
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, porro, sapiente tenetur sunt alias neque voluptatem nobis ratione saepe quia sed eveniet dolores ad quod! Cum reiciendis dolorum non et. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Voluptatem inventore corrupti quae officiis architecto animi dolorem mollitia nisi magnam sed optio dolore nihil labore eos, modi minima, ut suscipit rem.
     </div>
+
+    <button id="first">Click</button>
+    <input type="text" />
 </body>
 
 </html>
