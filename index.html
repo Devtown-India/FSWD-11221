@@ -7,94 +7,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        body {
-            background-color: black;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Metropolis;
         }
         
-        div.parent {
-            background-color: black;
-            height: 500px;
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            background-color: #000000;
         }
         
-        div.child-1 {
-            margin: 50px;
-            height: 40px;
-            width: 40px;
+        .boxes {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .boxes .box {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background-color: #ffbf00;
-            transition-duration: 1s;
-            transition-timing-function: cubic-bezier(0.09, -2.12, 0, 1.83);
-            animation-duration: 1s;
-            animation-name: dance;
-            animation-fill-mode: forwards;
-            animation-iteration-count: infinite;
-            animation-direction: alternate-reverse;
+            margin: 15px;
+            animation: loading 1s ease infinite;
+            background: #eb5757;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #000000, #eb5757);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #000000, #eb5757);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
         }
         
-        div.child-2 {
-            margin: 50px;
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            background-color: blueviolet;
-            transition-duration: 1s;
-            transition-timing-function: cubic-bezier(0.09, -2.12, 0, 1.83);
-            animation-duration: 1s;
-            animation-name: dance;
-            animation-delay: 0.3s;
-            animation-fill-mode: forwards;
-            animation-iteration-count: infinite;
-            animation-direction: alternate-reverse;
+        .boxes .box:nth-child(1) {
+            animation-delay: 0.5s;
         }
         
-        div.child-3 {
-            margin: 50px;
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            background-color: crimson;
-            transition-duration: 1s;
-            transition-timing-function: cubic-bezier(0.09, -2.12, 0, 1.83);
-            animation-duration: 1s;
-            animation-name: dance;
+        .boxes .box:nth-child(2) {
             animation-delay: 0.6s;
-            animation-fill-mode: forwards;
-            animation-iteration-count: infinite;
-            animation-direction: alternate-reverse;
         }
         
-        @keyframes dance {
+        .boxes .box:nth-child(3) {
+            animation-delay: 0.7s;
+        }
+        
+        .boxes .box:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
+        @keyframes loading {
             0% {
-                transform: translate(0, 0);
+                transform: translateY(0px);
             }
             25% {
-                transform: translate(200px, 200px);
-            }
-            50% {
-                transform: translate(900px, 500px);
-            }
-            75% {
-                transform: translate(600px, 200px);
+                transform: translateY(-40px);
             }
             100% {
-                transform: translate(800px, 0px);
+                transform: translateY(0px);
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="parent">
-        <div class="child-1"></div>
-        <div class="child-2"></div>
-        <div class="child-3"></div>
+    <div class="boxes">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
     </div>
 </body>
 
