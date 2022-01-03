@@ -11,75 +11,95 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Metropolis;
         }
         
         body {
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
+            background-color: #111;
+        }
+        
+        nav {
             background-color: #f1f1f1;
+            padding: 5px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .boxes {
+        nav header img {
+            width: 45px;
+        }
+        
+        section.links {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-evenly;
+            width: 60%;
         }
         
-        .boxes .box {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin: 15px;
-            animation: loading 1s ease infinite;
-            background: #eb5757;
-            /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #000000, #eb5757);
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #000000, #eb5757);
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(227, 240, 46, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(227, 240, 46, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+        section.links a:hover {
+            cursor: pointer;
         }
         
-        .boxes .box:nth-child(1) {
-            animation-delay: 0.5s;
+        section.links a {
+            text-decoration: none;
+            color: #111;
+            position: relative;
         }
         
-        .boxes .box:nth-child(2) {
-            animation-delay: 0.6s;
+        section.links a::after {
+            content: "";
+            position: absolute;
+            height: 3px;
+            width: 0%;
+            transition: 0.3s ease;
+            background-color: blueviolet;
+            left: 0;
+            bottom: -2px;
         }
         
-        .boxes .box:nth-child(3) {
-            animation-delay: 0.7s;
+        section.links a:hover::after {
+            width: 100%;
         }
         
-        .boxes .box:nth-child(4) {
-            animation-delay: 0.8s;
+        img#hamburger {
+            display: none;
         }
         
-        @keyframes loading {
-            0% {
-                transform: translateY(0px);
+        @media (min-width: 200px) {
+            section.links {
+                visibility: hidden;
             }
-            25% {
-                transform: translateY(-40px);
+        }
+        
+        @media (min-width: 600px) {
+            section.links {
+                width: 40%;
+                visibility: visible;
             }
-            100% {
-                transform: translateY(0px);
+        }
+        
+        @media (max-width: 600px) {
+            img#hamburger {
+                display: block;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="boxes">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-    </div>
+    <nav>
+        <header>
+            <img src="https://www.svgrepo.com/show/303249/mercedes-benz-9-logo.svg" alt="logo" />
+        </header>
+        <section class="links">
+            <a href="#">Login</a>
+            <a href="#">SignUp</a>
+            <a href="#">About</a>
+            <a href="#">My Profile</a>
+        </section>
+        <img id="hamburger" width="40px" src="https://www.svgrepo.com/show/316358/menu-hamburger.svg" alt="" />
+    </nav>
 </body>
 
 </html>
