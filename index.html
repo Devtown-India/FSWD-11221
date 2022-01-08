@@ -50,15 +50,41 @@
         footer div.icons i:hover {
             cursor: pointer;
         }
+        
+        section.container {
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        div.todo {
+            width: 400px;
+            border: 5px solid orange;
+            height: 450px;
+        }
+        
+        section.container div.todo div:first-child {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 10px;
+            color: #f1f1f1;
+        }
     </style>
 </head>
 
 <body>
     <header></header>
 
-    <div class="todo-container">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem laudantium, cumque nemo animi eos provident quaerat quam hic nesciunt ut earum minima, tempore odit assumenda deleniti reprehenderit. Unde, tempore voluptates?
-    </div>
+    <section class="container">
+        <div class="todo">
+            <div>
+                <h2>Todo List</h2>
+                <button>Click</button>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="name">Kartik Gupta</div>
