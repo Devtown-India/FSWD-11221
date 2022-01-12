@@ -1,66 +1,15 @@
-/*
-
- Assignment operators
-
-let age = 10
 
 
-console.log(++age)
-
-console.log(age)
-
-*/
-
-// comparison operator
-
-// let a = 10
-// let b = 15
-
-// console.log(a > b)
-// console.log(a < b)
-// console.log(a <= b)
-// console.log(a >= b)
-
-// let a = 10
-// let b = '10'
-
-
-// console.log(a == b)
-// console.log(a === b)
-
-// arithmetic operators
-
-// let a = 10
-// let b = 2
-
-// console.log(a + b)
-// console.log(a - b)
-// console.log(a * b)
-// console.log(a ** b)
-// console.log(a % b)
-// console.log(a / b)
-
-
-
-// let a = 10
-// let b = '10.1234'
-
-// console.log(Number(b) + a)
-
-// Logical operators
-
-// console.log('true && true', true && true)
-// console.log('true && false', true && false)
-// console.log('false && true', false && true)
-// console.log('false && false', false && false)
+let greet2 = function (name) {
+    return "Hi " + name;
+}
 
 
 
 
-// console.log('true || true', true || true)
-// console.log('true || false', true || false)
-// console.log('false || true', false || true)
-// console.log('false || false', false || false)
+let greet1 = (name) => `Hi ${name} ${2 * 3}`
 
 
 
+console.log(greet1('John'))
+console.log(greet2('John'))
