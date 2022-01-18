@@ -1,17 +1,20 @@
-const body = document.querySelector('body')
+const button = document.querySelector('button')
 
-const tasks = ['Go to the GYM', 'Take Medicine', "Eat", "SLeep"]
+const bmw = (e) => {
+    console.log(e)
+    const ele = e.target
+    ele.style = "background:red"
+    ele.remove()
+}
 
-const ol = document.createElement('ol')
 
-tasks.forEach(task => {
-    const li = document.createElement("li")
-    const textNode = document.createTextNode(task)
-    li.appendChild(textNode)
-    ol.appendChild(li)
+button.addEventListener('click', bmw)
+
+button.addEventListener('dblclick', e => {
+    e.target.style = "background:orange"
 })
 
-console.log(ol)
+button.addEventListener('mouseover', e => {
+    e.target.style = "background:pink"
 
-
-body.appendChild(ol)
+})
