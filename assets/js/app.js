@@ -1,18 +1,17 @@
 const body = document.querySelector('body')
 
-const ele = document.createElement("div")
-const textNode = document.createTextNode('This is a dynamic element')
+const tasks = ['Go to the GYM', 'Take Medicine', "Eat", "SLeep"]
+
+const ol = document.createElement('ol')
+
+tasks.forEach(task => {
+    const li = document.createElement("li")
+    const textNode = document.createTextNode(task)
+    li.appendChild(textNode)
+    ol.appendChild(li)
+})
+
+console.log(ol)
 
 
-// body.appendChild(node)
-
-console.log(ele)
-console.log(textNode)
-
-ele.appendChild(textNode)
-
-console.log(ele)
-
-body.appendChild(ele)
-
-ele.remove()
+body.appendChild(ol)
