@@ -1,17 +1,18 @@
-// let elements = document.getElementsByClassName('temp')
-// let elements = document.getElementsByTagName('div')
-let elements = document.querySelectorAll('div.temp')
+const body = document.querySelector('body')
 
-let arr = [1, 2, 3, 4, 5]
-
-console.log(elements)
-console.log(arr)
+const ele = document.createElement("div")
+const textNode = document.createTextNode('This is a dynamic element')
 
 
-// for (let i = 0; i < elements.length; i++) {
-//     elements[i].innerHTML = `Element ${i}`
-// }
+// body.appendChild(node)
 
-elements.forEach((ele, i) => {
-    ele.innerHTML = `Element ${i} ${i % 2 == 0 ? 'even' : "odd"}`
-});
+console.log(ele)
+console.log(textNode)
+
+ele.appendChild(textNode)
+
+console.log(ele)
+
+body.appendChild(ele)
+
+ele.remove()
