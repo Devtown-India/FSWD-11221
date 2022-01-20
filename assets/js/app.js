@@ -1,20 +1,44 @@
 const button = document.querySelector('button')
+const input = document.querySelector('input#todo_input')
+const list = document.querySelector('ol')
 
-const bmw = (e) => {
-    console.log(e)
-    const ele = e.target
-    ele.style = "background:red"
-    ele.remove()
+
+input.addEventListener('keydown', e => {
+    const key = e.key
+    if (key === 'Enter') {
+        // console.log("ENter key")
+        handleAdd()
+    }
+})
+
+
+const handleAdd = (e) => {
+
+    const textToAdd = input.value
+
+    if (textToAdd.length > 0) {
+        const ele = document.createElement('li')
+        const text_node = document.createTextNode(textToAdd)
+
+        ele.appendChild(text_node)
+        list.appendChild(ele)
+        // create a dynamic button element
+        const button = document.createElement('button')
+        button.innerHTML = "Delete"
+        ele.appendChild(button)
+
+        button.addEventListener('click', (e) => {
+            ele.remove()
+        })
+
+
+        // clear the list
+        input.value = ''
+    } else {
+        window.alert("Task can not be empty")
+    }
+
 }
 
+button.addEventListener('click', handleAdd)
 
-button.addEventListener('click', bmw)
-
-button.addEventListener('dblclick', e => {
-    e.target.style = "background:orange"
-})
-
-button.addEventListener('mouseover', e => {
-    e.target.style = "background:pink"
-
-})
