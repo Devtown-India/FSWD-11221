@@ -7,30 +7,49 @@
 
     <style>
         * {
-            transition: 0.5s ease-in;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Metropolis;
         }
         
-        body.dark {
-            background-color: #111;
+        div.choices {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 200px;
         }
         
-        h1,
-        div {
-            color: #111;
+        img {
+            width: 100px;
+            border: 2px solid red;
+            border-radius: 50%;
+            padding: 5px;
+            transition: 0.3s ease-in;
+            margin: 0px 50px;
         }
         
-        body.dark h1,
-        body.dark div {
-            color: #f1f1f1;
+        img:hover {
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         }
     </style>
 </head>
 
 <body>
-    <button>CLick</button>
-    <h1>This is a heading</h1>
-    <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, laboriosam est tenetur quisquam optio officia quasi obcaecati? Cupiditate consequatur, voluptates quam labore neque rerum officiis quos laborum tenetur, fugiat vero?
+    <div class="board">
+        <h1>User: <span id="user">0</span></h1>
+        <h1>Computer: <span id="computer">0</span></h1>
+    </div>
+    <div class="choices">
+        <img src="https://www.svgrepo.com/show/114864/fist.svg" alt="rock" id="rock" />
+
+        <img src="https://www.svgrepo.com/show/323911/paper.svg" alt="paper" id="paper" />
+
+        <img src="https://cdn-icons.flaticon.com/png/512/4151/premium/4151780.png?token=exp=1642770736~hmac=340fd7d9b2c28f7eb5fde317875cfd08" alt="scissor" id="scissor" />
+    </div>
+    <div class="result">
+        <h1></h1>
     </div>
 </body>
 
