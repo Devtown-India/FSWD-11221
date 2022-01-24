@@ -1,8 +1,6 @@
+const h = document.querySelector('h2')
+const b = document.querySelector('button')
 
-const response = fetch('https://jsonplaceholder.typicode.com/photos')
-
-console.log(response)
-
-setTimeout(() => {
-    console.log(response)
-}, 150)
+b.addEventListener('click', e => {
+    h.classList.toggle("hide")
+})
