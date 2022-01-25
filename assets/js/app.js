@@ -1,17 +1,23 @@
-// const response = fetch('https://jsonplaceholder.typicode.com/posts')
-
-// response.then(res => {
-//     console.log(res)
-//     const data = res.json()
-//     data.then(value => { console.log(value) })
-// })
+const list = document.querySelector('ul')
 
 fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => {
         return response.json()
     }).then(data => {
         console.log(data)
+
+        data.forEach((post, iter) => {
+            console.log(post.title)
+            const ele = document.createElement('li')
+            ele.innerHTML = `${iter + 1} : ${post.title}`
+            list.appendChild(ele)
+        })
+
     })
+
+
+console.log("Hihih")
+
 
 
 //  B -> Book
@@ -22,8 +28,24 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 
 /*
 
-settled 
+settled
     - fullfilled
     -rejected
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// https://api.spacexdata.com/v4/rockets
