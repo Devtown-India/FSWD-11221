@@ -51,23 +51,76 @@ Make an API call to A
 //         console.log(err)
 //     })
 
-const getData = async () => {
 
-    try {
+// const data = 
 
-        const response = await fetch('https://jsonplaceholder.typicode.com/todos')
-        const data = await response.json()
-        console.log(data)
+// const [c2, c1] = ["SHeldon", "Stuart", "Leonard"]
 
-    } catch (error) {
-        console.log(error)
-    }
-    finally {
-        console.log("Ill execute no matter what")
-    }
+// console.log(c1)
 
+// console.log(data.name)
+// console.log(data['name'])
+
+
+// const getData = async () => {
+
+//     try {
+
+//         const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+//         const data = await response.json()
+
+//         data.forEach(ele => {
+//             // console.log(ele)
+//             const { userId, title } = ele
+
+//             console.log(`${userId} ${title}`)
+//         })
+
+//     } catch (error) {
+//         console.log(error)
+//     }
+//     finally {
+//         console.log("Ill execute no matter what")
+//     }
+
+// }
+
+// getData()
+
+// console.log(3)
+
+// let a = {
+//     brand: "mercedes"
+// }
+
+// let b = a
+// let c = {...a }
+
+// c.brand = "Porsche"
+
+// // console.log(a)
+// // console.log(b)
+// console.log(c)
+// console.log(a)
+
+const a = {
+    brand: "mercedes"
 }
 
-getData()
+const b = {
+    brand: "Porsche"
+}
 
-console.log(3)
+const c = {
+    ...a,
+    ...b
+}
+
+
+// const c ={
+//     brand: "mercedes",
+//     model: "S500 Maybach"
+// }
+
+
+console.log(c)
