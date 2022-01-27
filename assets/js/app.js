@@ -1,51 +1,73 @@
-const list = document.querySelector('ul')
 
-fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(response => {
-        return response.json()
-    }).then(data => {
-        console.log(data)
+// let value = 9
 
-        data.forEach((post, iter) => {
-            console.log(post.title)
-            const ele = document.createElement('li')
-            ele.innerHTML = `${iter + 1} : ${post.title}`
-            list.appendChild(ele)
-        })
+// const myFirstPromise = new Promise((resolve, reject) => {
+//     if (value > 10) resolve([{ id: 1, data: "this is data" }])
+//     else reject({ error: "error fetching data" })
+// })
 
-    })
-
-
-console.log("Hihih")
-
-
-
-//  B -> Book
-
-// THEN WHAT ? 
-
-//  BOOK -> We take the book and stack it on the shelf
+// myFirstPromise
+//     .then(response => response[0])
+//     .then(data => {
+//         console.log(data)
+//     }).catch(err => { console.log(err) })
 
 /*
-
-settled
-    - fullfilled
-    -rejected
+Make an API call to A
+-> then use the data from A to make another api call to B
+-> then use the data from B to make another api call to C
+-> then use the data from B to make another api call to C
+-> then use the data from B to make another api call to C
+-> then use the data from B to make another api call to C
+-> then use the data from B to make another api call to C
 
 */
 
 
+// const getData = ()=>{
+
+// }
 
 
 
+// fetch('https://google.com')
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(response => response.data)
+//     .then(data => {
+//         console.log(data)
+//     }).catch(err => {
+//         console.log(err)
+//     })
 
+const getData = async () => {
 
+    try {
 
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+        const data = await response.json()
+        console.log(data)
 
+    } catch (error) {
+        console.log(error)
+    }
+    finally {
+        console.log("Ill execute no matter what")
+    }
 
+}
 
+getData()
 
-
-
-
-// https://api.spacexdata.com/v4/rockets
+console.log(3)
