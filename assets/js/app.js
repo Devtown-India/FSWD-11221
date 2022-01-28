@@ -1,126 +1,69 @@
+const application_id = '8ad6c7fd'
+const application_key = '4d521a38ec59b892fe20018242272e5f'
 
-// let value = 9
-
-// const myFirstPromise = new Promise((resolve, reject) => {
-//     if (value > 10) resolve([{ id: 1, data: "this is data" }])
-//     else reject({ error: "error fetching data" })
-// })
-
-// myFirstPromise
-//     .then(response => response[0])
-//     .then(data => {
-//         console.log(data)
-//     }).catch(err => { console.log(err) })
-
-/*
-Make an API call to A
--> then use the data from A to make another api call to B
--> then use the data from B to make another api call to C
--> then use the data from B to make another api call to C
--> then use the data from B to make another api call to C
--> then use the data from B to make another api call to C
--> then use the data from B to make another api call to C
-
-*/
+const input = document.querySelector('#search input')
+const button = document.querySelector('#search button')
+const container = document.querySelector('div.recipe-container')
 
 
-// const getData = ()=>{
+const getRecipe = async (query) => {
 
-// }
+    const endpoint = `https://api.edamam.com/search?q=${query}&app_id=${application_id}&app_key=${application_key}`
 
+    const res = await fetch(endpoint)
+    const data = await res.json()
+    const { hits } = data
 
-
-// fetch('https://google.com')
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(response => response.data)
-//     .then(data => {
-//         console.log(data)
-//     }).catch(err => {
-//         console.log(err)
-//     })
-
-
-// const data = 
-
-// const [c2, c1] = ["SHeldon", "Stuart", "Leonard"]
-
-// console.log(c1)
-
-// console.log(data.name)
-// console.log(data['name'])
-
-
-// const getData = async () => {
-
-//     try {
-
-//         const response = await fetch('https://jsonplaceholder.typicode.com/todos')
-//         const data = await response.json()
-
-//         data.forEach(ele => {
-//             // console.log(ele)
-//             const { userId, title } = ele
-
-//             console.log(`${userId} ${title}`)
-//         })
-
-//     } catch (error) {
-//         console.log(error)
-//     }
-//     finally {
-//         console.log("Ill execute no matter what")
-//     }
-
-// }
-
-// getData()
-
-// console.log(3)
-
-// let a = {
-//     brand: "mercedes"
-// }
-
-// let b = a
-// let c = {...a }
-
-// c.brand = "Porsche"
-
-// // console.log(a)
-// // console.log(b)
-// console.log(c)
-// console.log(a)
-
-const a = {
-    brand: "mercedes"
+    return hits
 }
 
-const b = {
-    brand: "Porsche"
-}
-
-const c = {
-    ...a,
-    ...b
+const createRecipeCard = (image, name, cookTime, recipeUrl) => {
+    return ` <div class="ft-recipe">
+            <div class="ft-recipe__thumb">
+                <span id="close-modal"><i class="ion ion-md-close"></i></span>
+                <h3>Today's Featured Recipe</h3>
+                <img src=${image} alt="Strawberry Waffle" />
+            </div>
+            <div class="ft-recipe__content">
+                <header class="content__header">
+                    <div class="row-wrapper">
+                        <h2 class="recipe-title">${name}</h2>
+                        <div class="user-rating"></div>
+                    </div>
+                    <ul class="recipe-details">
+                        <li class="recipe-details-item time">
+                            <i class="ion ion-ios-clock-outline"></i
+                ><span class="value">${cookTime}</span><span class="title">Minutes</span>
+              </li>
+            
+            </ul>
+          </header>
+          <p class="description">
+            There’s no better way to celebrate May being National Strawberry
+            Month than by sharing a sweet treat with your pup!!! Strawberries...
+          </p>
+          <footer class="content__footer"><a href=${recipeUrl}>View Recipe</a></footer>
+        </div>
+      </div>`
 }
 
 
-// const c ={
-//     brand: "mercedes",
-//     model: "S500 Maybach"
-// }
+const handleSearch = async () => {
+    // clear the previous images if any
+    container.innerHTML = null
+
+    const query = input.value
+    const hits = await getRecipe(query)
+    hits.forEach(hit => {
+        const { recipe } = hit
+        const ele = document.createElement('div')
+        const markup = createRecipeCard(recipe.image, query, recipe.totalTime, recipe.url)
+        ele.innerHTML = markup
+        console.log(markup)
+        container.appendChild(ele)
+    })
+}
 
 
-console.log(c)
+button.addEventListener('click', handleSearch)
+
