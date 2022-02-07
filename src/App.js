@@ -1,24 +1,25 @@
-
+import { useState } from 'react'
+import Counter from './components/Counter'
 
 const App = () => {
 
-  let count = 0
+  const [state, setState] = useState(0)
 
   const handleIncrease = (e) => {
-    count += 1
+    setState((previousStateValue) => previousStateValue + 1)
+    console.log(state)
+  }
+  const handleDecrease = (e) => {
 
-    console.log(count)
+    setState((previousStateValue) => previousStateValue === 0 ? previousStateValue : previousStateValue - 1)
+    console.log(state)
   }
 
   return (
     <div style={{ height: "500px", display: "flex", alignItems: "center", flexDirection: "column" }} >
-
-      <h2>
-        {count}
-      </h2>
+      <Counter count={state} />
       <div>
-        <button>Decrease</button>
-
+        <button onClick={handleDecrease} >Decrease</button>
         <button onClick={handleIncrease} >Increase</button>
       </div>
 
