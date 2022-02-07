@@ -1,9 +1,31 @@
+
+
 const App = () => {
+
+  let count = 0
+
+  const handleIncrease = (e) => {
+    count += 1
+
+    console.log(count)
+  }
+
   return (
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga consequuntur sunt eum ipsa, nobis rerum et iure nam ea est, aspernatur, quibusdam unde molestiae sed tempora repellat iste eos cum!
+    <div style={{ height: "500px", display: "flex", alignItems: "center", flexDirection: "column" }} >
+
+      <h2>
+        {count}
+      </h2>
+      <div>
+        <button>Decrease</button>
+
+        <button onClick={handleIncrease} >Increase</button>
+      </div>
+
     </div>
   );
 }
+
+// React.createElement
 
 export default App;
