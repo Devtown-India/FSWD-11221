@@ -1,31 +1,9 @@
-import { useState } from 'react'
-import Counter from './components/Counter'
-
 const App = () => {
-
-  const [state, setState] = useState([])
-
-  const handleAdd = (item) => {
-    setState(prev => {
-      const newArr = prev
-      newArr.push(item)
-      return newArr
-    })
-  }
-
-
-  return (
-    <div style={{ height: "500px", display: "flex", alignItems: "center", flexDirection: "column" }} >
-      <div>
-        {state.map(todo => {
-
-        })}
-      </div>
-
+  return ( 
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis obcaecati iusto rem quia laudantium exercitationem, numquam omnis explicabo, debitis est nesciunt deleniti illum quod reprehenderit itaque odio expedita aspernatur ratione.
     </div>
-  );
+   );
 }
-
-// React.createElement
-
+ 
 export default App;
