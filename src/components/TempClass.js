@@ -16,7 +16,6 @@ class TempClass extends React.Component{
         })
     }
 
-
     componentDidMount(){
         console.log("Component mounted")
         fetch('https://jsonplaceholder.typicode.com/todos').then(res=>res.json()).then(data=>{
@@ -31,8 +30,6 @@ class TempClass extends React.Component{
     componentWillUnmount(){
         console.log("I'm unmounting")
     }
-
-    
 
     render(){
         return(
