@@ -1,15 +1,16 @@
-const List = ({recipies}) => {
+import RecipeCard from "./RecipeCard";
+
+const List = ({hits}) => {
     return ( 
         <div>
             {
-                recipies.map(recipe=>(
-                    <div>
-                        <h2>{recipe.name}</h2>
-                    </div>
-                ))
+                hits.map(({recipe:{label,image}})=><RecipeCard label={label} image={image} />)
             }
         </div>
      );
 }
  
 export default List;
+
+
+
