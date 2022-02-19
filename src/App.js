@@ -1,15 +1,9 @@
-import Header from './components/Header';
-import Recipe from './components/Recipe/Recipe';
-import Footer from './layout/Footer'
-
 const App = () => {
-  return (
+  return ( 
     <div>
-      <Header/>
-      <Recipe/>
-      <Footer/>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto fugiat voluptate eos. Delectus, nobis dolores odio quo incidunt, dignissimos ex aut, harum laborum culpa tempora maxime. In beatae exercitationem soluta?
     </div>
-    );
+   );
 }
  
 export default App;
