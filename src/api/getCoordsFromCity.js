@@ -12,7 +12,6 @@ export const getCoordsFromCity = async ({name})=>{
                key: api_key
            }
        })
-    toast.success("got the coords")
        return res.data
    } catch (error) {
        toast.error(error.message)

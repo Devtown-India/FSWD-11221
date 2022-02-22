@@ -1,29 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { getForecast } from "./api/getForecast";
 import Search from "./components/Search";
+
 const App = () => {
 
+  const [city,setCity] = useState('city')
+  console.log(city)
 
-  useEffect(()=>{
 
-    const locationSuccess = async ({coords:{latitude,longitude}})=>{
-      const forecast = await getForecast({ longitude, latitude })
-      console.log(forecast)
-    }
+  // useEffect(()=>{
 
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(locationSuccess)
-    }else{
-      alert("You browser doesn't support geolocation")
-    }
+  //   const locationSuccess = async ({coords:{latitude,longitude}})=>{
+  //     const forecast = await getForecast({ longitude, latitude })
+  //     console.log(forecast)
+  //   }
+
+  //   if(navigator.geolocation){
+  //     navigator.geolocation.getCurrentPosition(locationSuccess)
+  //   }else{
+  //     alert("You browser doesn't support geolocation")
+  //   }
     
-  },[])
+  // },[])
 
   return ( 
     <div>
       <div><Toaster /></div>
-      <Search/>
+      <Search setCity={setCity} />
     </div>
    );
 }
