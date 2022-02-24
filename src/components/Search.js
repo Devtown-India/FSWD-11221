@@ -4,6 +4,7 @@ import { getCoordsFromCity } from "../api/getCoordsFromCity";
 import { getForecast } from "../api/getForecast";
 
 
+
 const Search = ({setCity}) => {
 
     const [query,setQuery] = useState('')
