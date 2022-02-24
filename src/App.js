@@ -18,6 +18,17 @@ const App = () => {
   console.log(city)
 
 
+  const handleSearch = ()=>{
+    // make the request to opencage to get coords of the query
+    // make the req to weather api to get the weather
+    // setWeatherForecast(forecast)
+  }
+
+  useEffect(()=>{
+    handleSearch()
+  },[city])
+
+
   useEffect(()=>{
 
     const locationSuccess = async ({coords:{latitude,longitude}})=>{
@@ -46,6 +57,8 @@ const App = () => {
   return ( 
     <div className="App">
       <div className="App_container">
+        <Search/>
+        {loader&&<Loader/>}
         {weatherForecast && <CurrentWeather weatherInfo={weatherForecast} location={location}/>}
 
 

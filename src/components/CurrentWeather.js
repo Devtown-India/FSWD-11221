@@ -25,6 +25,17 @@ const CurrentWeather = ({weatherInfo,location}) => {
                     </li>
                 </ul>
             </div>
+            <div className="Weather__other-info">
+                <h2 className="other-info__city">
+                    {location.city},
+                    {location.state}
+                </h2>
+                <h3>
+                    Thursday
+                </h3>
+                <h4>{weatherInfo.current.weather[0].description}</h4>
+
+            </div>
         </div>
      );
 }
