@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { getCityFromCoords } from "./api/getCityFromCoords";
+import { getCoordsFromCity } from "./api/getCoordsFromCity";
 import { getForecast } from "./api/getForecast";
 import Forecast from "./components/Forecast";
 import Search from "./components/Search";
@@ -11,22 +12,17 @@ import './styles/App.css'
 
 const App = () => {
 
-  const [city,setCity] = useState('city')
+  const [city,setCity] = useState(null)
   const [loader,setLoader] = useState(false)
   const [location,setLocation] = useState(null)
   const [weatherForecast, setWeatherForecast] = useState(null)
-  console.log(city)
 
+  // const handleSearch = ()=>{
+  //   // make the request to opencage to get coords of the query
+  //   // make the req to weather api to get the weather
+  //   // setWeatherForecast(forecast)
+  // }
 
-  const handleSearch = ()=>{
-    // make the request to opencage to get coords of the query
-    // make the req to weather api to get the weather
-    // setWeatherForecast(forecast)
-  }
-
-  useEffect(()=>{
-    handleSearch()
-  },[city])
 
 
   useEffect(()=>{
@@ -39,7 +35,6 @@ const App = () => {
       const forecast = await getForecast({ longitude, latitude })
       setLoader(false)
       setWeatherForecast(forecast)
-      console.log(forecast)
     }
 
 
@@ -51,13 +46,39 @@ const App = () => {
     
   },[])
 
-  console.log(weatherForecast?.daily)
+  const handleSearch = async()=>{
+    const { results: [result]} = await getCoordsFromCity({ name: city })
+    const {geometry:{lat,lng}} = result
+    console.log({longitude:lng,latitude:lat}) 
+    setLoader(true)
+    const address = await getCityFromCoords({ longitude: lng, latitude: lat })
+    setLocation(address.results[0].components)
+
+    const forecast = await getForecast({ longitude: lng, latitude: lat })
+    setLoader(false)
+    setWeatherForecast(forecast)
+  }
+
+  useEffect(() => {
+    if(city){
+    console.log('city changed')
+    handleSearch()
+    }
+  }, [city])
+
+
+  // const handleSearch = async ()=>{
+  //   // const address = await getCityFromCoords({ latitude, longitude })
+  //   // setLocation(address.results[0].components)
+  //   console.log(cityData)
+  //   // const forecast = await getForecast({ longitude, latitude })
+  // }
 
 
   return ( 
     <div className="App">
       <div className="App_container">
-        <Search/>
+        <Search setCity={setCity} />
         {loader&&<Loader/>}
         {weatherForecast && <CurrentWeather weatherInfo={weatherForecast} location={location}/>}
 

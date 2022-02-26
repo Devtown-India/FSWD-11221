@@ -1,7 +1,6 @@
 import '../styles/Forecast.css'
 
 const Forecast = ({weatherInfo,location:{city,state_code}}) => {
-    console.log(weatherInfo)
     return ( 
         <div style={{display:"flex"}} >
             {/* <h1 className="Forecast__title">{city},{state_code}</h1> */}
