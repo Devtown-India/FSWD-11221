@@ -11,7 +11,8 @@ import {Provider} from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const initialState = {
-  todos:["go to the GYM", "Eat Protein", "Do the work"]
+  todos:[],
+  cars:['huracan',"STO","EVO"]
 }
 
 const store = createStore(todosReducer, initialState, composeWithDevTools())
