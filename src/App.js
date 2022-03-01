@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import One from "./components/One";
+import TodoList from "./components/TodoList";
 
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
 
   return ( 
     <div>
-      <One/>
+      <TodoList/>
     </div>
    );
 }
