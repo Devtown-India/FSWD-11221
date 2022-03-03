@@ -1,15 +1,16 @@
-import Blog from "./components/Blog";
-import Heading from "./components/Heading";
-import WithHeading from "./HOC/WithHeading";
-import Temp from './components/Temp'
+import Profile from './components/Profile'
+import Dm from './components/Dm'
+import Private from './HOC/Private';
 
 const App = () => {
-  return ( <div>
-    <WithHeading>
-      <Blog/>
-      <Temp/>
-    </WithHeading>
-  </div> );
+  return ( 
+   <div>
+      <Private>
+        <Profile />
+        <Dm />
+      </Private>
+   </div>
+   );
 }
  
 export default App;
