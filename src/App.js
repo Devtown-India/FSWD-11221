@@ -1,16 +1,21 @@
-import Profile from './components/Profile'
-import Dm from './components/Dm'
-import Private from './HOC/Private';
+import {Routes,Route} from 'react-router-dom'
+import About from './components/About';
+import Contact from './components/Contact';
+import Home from './components/Home';
+import Profile from './components/Profile';
 
 const App = () => {
-  return ( 
-   <div>
-      <Private>
-        <Profile />
-        <Dm />
-      </Private>
-   </div>
-   );
+    return ( 
+        <div>
+            <Routes>
+                <Route path='/' element={<Home/>} />
+                <Route path='/contact' element={<Contact/>} />
+                <Route path='/about' element={<About/>} />
+                <Route path='/profile' element={<Profile/>} />
+            </Routes>
+         
+        </div>
+     );
 }
  
 export default App;
