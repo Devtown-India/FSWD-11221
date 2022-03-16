@@ -1,12 +1,13 @@
-const List = () => {
-    
+const List = ({todos}) => {
+
     return ( 
         <div className="todo-container">
             <ol>
-                <li>Item 1 <button>Delete</button> <button>Mark Complete</button> </li>
-                <li>Item 2 <button>Delete</button> <button>Mark Complete</button></li>
-                <li>Item 4 <button>Delete</button> <button>Mark Complete</button></li>
-                <li>Item 5 <button>Delete</button> <button>Mark Complete</button></li>
+                {
+                    todos ? todos.map(item=>(
+                        <li>{item} <button>Delete</button> <button>Mark Complete</button> </li>
+                    )) : "No items to display"
+                }
             </ol>
         </div>
      );
