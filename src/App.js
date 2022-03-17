@@ -1,19 +1,21 @@
-import { useState } from "react"
+import './styles/Header.css'
+
+
+import Header from './components/Header'
+import List from './components/List'
+import TodoInput from './components/TodoInput'
+import { useState } from 'react'
 
 const App = () => {
 
-  const [state,setState] = useState(10)
-
-  console.log(state)
-
-  const handleClick = () => {
-    setState((prev)=>prev+1)
-  }
+  const [todos,setTodos] = useState([])
 
   return (
     <div>
-      <h2>{state}</h2>
-      <button onClick={handleClick} >+</button>
+      <Header/>
+      <TodoInput setTodos={setTodos} />
+      <List setTodos={setTodos} todos={todos} />
+
     </div>
   );
 }
