@@ -1,3 +1,5 @@
+import ListItems from "./ListItems";
+
 const List = ({todos}) => {
 
     return ( 
@@ -5,7 +7,7 @@ const List = ({todos}) => {
             <ol>
                 {
                     todos ? todos.map(item=>(
-                        <li>{item} <button>Delete</button> <button>Mark Complete</button> </li>
+                       <ListItems item={item}/>
                     )) : "No items to display"
                 }
             </ol>
