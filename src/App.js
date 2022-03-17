@@ -1,51 +1,21 @@
-
-
-import Header from './components/Header'
-import List from './components/List'
-import TodoInput from './components/TodoInput'
+import { useState } from "react"
 
 const App = () => {
 
-  const todos = ['Item 1', "Item 2", "Item 3", "Item 4"]
+  const [state,setState] = useState(10)
 
-  const doSomething = ()=>{
-    console.log("Did something")
+  console.log(state)
+
+  const handleClick = () => {
+    setState((prev)=>prev+1)
   }
-
 
   return (
     <div>
-      <Header/>
-      <TodoInput/>
-      <List  doSomething={doSomething} />
-
+      <h2>{state}</h2>
+      <button onClick={handleClick} >+</button>
     </div>
   );
 }
 
-
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
