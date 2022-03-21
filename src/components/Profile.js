@@ -21,8 +21,7 @@ const Profile = () => {
 
     const fetchData = async (username)=>{
         const data = await getDatafromDB(username)
-        console.log(data)
-        // setData(data)
+        setData(data)
     }
 
     useEffect(()=>{
