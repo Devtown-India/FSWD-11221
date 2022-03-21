@@ -17,19 +17,23 @@ const Profile = () => {
 
     const {username} = useParams()
 
-    const [data,setData]= useState({})
+    const [data,setData]= useState(null)
 
     const fetchData = async (username)=>{
         const data = await getDatafromDB(username)
         console.log(data)
-        setData(data)
+        // setData(data)
     }
 
-
+    useEffect(()=>{
+        fetchData()
+    },[])
 
     return ( 
         <div>
-            <h3>{data.username} Profile</h3>
+          {data?(
+                <h3>{data.username} Profile</h3>
+          ):"LOading"}
         </div>
      );
 }
