@@ -1,23 +1,23 @@
-import './styles/Header.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Counter from "./components/Counter";
+import Home from "./components/Home";
+import Timer from "./components/Timer";
+import Navbar from "./layout/Navbar";
 
 
-import Header from './components/Header'
-import List from './components/List'
-import TodoInput from './components/TodoInput'
-import { useState } from 'react'
 
 const App = () => {
-
-  const [todos,setTodos] = useState([])
-
-  return (
-    <div>
-      <Header/>
-      <TodoInput setTodos={setTodos} />
-      <List setTodos={setTodos} todos={todos} />
-
-    </div>
-  );
+  return ( 
+      <>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/timer' element={<Timer />} />
+        <Route path='/counter' element={<Counter />} />
+      </Routes>
+      </>
+    
+   );
 }
-
+ 
 export default App;
