@@ -1,15 +1,11 @@
-import { useState } from "react";
-import One from "./components/One";
+import AddTodo from "./components/AddTodo";
+import List from "./components/List";
 
 const App = () => {
-
-  const [count,setCount] = useState(15)
-
-
   return ( 
-    <div>
-      <h1>State management</h1>
-      <One count={count} />
+    <div style={{margin:"50px"}} >
+      <AddTodo/>
+      <List/>
     </div>
    );
 }
