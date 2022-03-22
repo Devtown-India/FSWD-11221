@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const List = () => {
 
-    const store = useSelector(state => state)
-
-    const [todos, settodos] = useState(store)
-
+    const todos = useSelector(state => state)
+    const dispatch = useDispatch()
+    const handleDelete = (todo)=>{
+        dispatch({
+            type:"DELETE_TODO",
+            payload:todo
+        })
+    }
     return ( 
         <ul>
             {todos.map(todo=>(
-                <li>{todo}</li>
+               <>
+                    <li>{todo}</li>
+                    <button onClick={()=>handleDelete(todo)} >Remove</button>
+                    </>
             ))}
         </ul>
      );

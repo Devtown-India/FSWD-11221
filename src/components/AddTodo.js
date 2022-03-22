@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const AddTodo = () => {
     const [chore,setChore] = useState('')
+    const dispatch = useDispatch()
 
     const handleAdd = ()=>{
-        console.log(chore)
+        const action = {
+            type:"ADD_TODO",
+            payload:chore
+        }
+        dispatch(action)
     }
 
     return ( 
