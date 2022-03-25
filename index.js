@@ -1,7 +1,12 @@
-const os = require('os')
+const path = require('path')
+// ! resolve will return the root
+// console.log(path.resolve())
+// console.log(__dirname)
 
+// console.log(path.extname('app.js'))
 
-console.log(os.platform())
-console.log(os.arch())
-console.log(os.hostname())
-console.log(os.userInfo())
+const absolutePath = __dirname
+const relativePath = '../'
+
+console.log(path.isAbsolute(absolutePath))
+console.log(path.isAbsolute(relativePath))

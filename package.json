@@ -3,7 +3,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
-        "dev": "nodemon index.js"
+        "dev": "nodemon app/app.js"
     },
     "dependencies": {
         "axios": "^0.26.1"
