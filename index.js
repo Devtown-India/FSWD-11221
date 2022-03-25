@@ -1,12 +1,7 @@
-const axios = require('axios')
+const os = require('os')
 
-// axios.get('https://jsonplaceholder.typicode.com/todos').then(res=>{
-//     console.log(res.data)
-// })
 
-const fetchData = async ()=>{
-   const res = await axios.get('https://jsonplaceholder.typicode.com/todos')
-   console.log(res.data)
-}
-
-fetchData()
+console.log(os.platform())
+console.log(os.arch())
+console.log(os.hostname())
+console.log(os.userInfo())
