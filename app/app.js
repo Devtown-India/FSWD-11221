@@ -1,44 +1,73 @@
-const http = require('http')
-const fs = require('fs')
-const path = require('path')
+const express = require('express')
+const app = express()
+const PORT = 8080
 
 
-const server = http.createServer((req,res)=>{
+app.use(express.json())
 
-    switch(req.url){
-        case "/page":
-            res.writeHead(200, {
-                'Content-Type': "text/html"
-            })
-            const contents = fs.readFileSync(path.join(path.resolve(), '/public/index.html'), { encoding: "UTF-8" })
+const users = []
 
-            res.write(contents)
-            return res.end()
+const isValidUser = (req, res, next) => {
 
-        case "/ping":
-            res.write('PONG')
-            return res.end()
+    const { user } = req.body
 
-        case "/todos":
-            res.writeHead(200, {
-                'Content-Type': "text/json"
-            })
-            const data = fs.readFileSync(path.join(path.resolve(), '/public/data.json'), { encoding: "UTF-8" })
-            res.write(data)
+    if (!user) return res.json({
+        user: null,
+        message: "User can not be null",
+        success: false,
+    })
 
-        case "/image":
-            res.writeHead(200, {
-                'Content-Type': "image/jpeg"
-            })
-            const image = fs.readFileSync(path.join(path.resolve(), '/public/saudiGP.jpg'))
-            res.write(image)
+    if (users.includes(user)) return res.json({
+        user: null,
+        message: "User already exists",
+        success: false,
+    })
 
-        default:
-            res.write('the default case')
-            return res.end()
+    return next()
+}
 
+app.get('/users', (req,res)=>{
+    try {
+        res.json({
+            users,
+            message:"Users fetched",
+            success:true,
+        })
+    } catch (error) {
+        console.log(error)
+        res.json({
+            users:[],
+            message: "Error getting the users",
+            success: false,
+        })
     }
- 
 })
 
-server.listen(8080)
+app.post('/users', isValidUser ,(req, res) => {
+    try {
+        const {user} = req.body
+        users.push(user)
+        return res.json({
+            user,
+            message: "User added",
+            success: true,
+        })
+      
+    } catch (error) {
+        console.log(error)
+        res.json({
+            user:null,
+            message: "failed to add user",
+            success: false,
+        })
+    }
+})
+
+module.exports = {
+    users
+}
+
+
+app.listen(PORT,()=>{
+    console.log(`Express server listening at port ${PORT}`)
+})

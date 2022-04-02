@@ -6,7 +6,8 @@
         "dev": "nodemon app/app.js"
     },
     "dependencies": {
-        "axios": "^0.26.1"
+        "axios": "^0.26.1",
+        "express": "^4.17.3"
     },
     "devDependencies": {
         "nodemon": "^2.0.15"
