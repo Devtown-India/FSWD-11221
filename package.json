@@ -1,9 +1,9 @@
 {
     "name": "fswd-11221",
-    "main": "index.js",
+    "main": "server.js",
     "scripts": {
         "start": "node index.js",
-        "dev": "nodemon app/app.js"
+        "dev": "nodemon server.js"
     },
     "dependencies": {
         "axios": "^0.26.1",
