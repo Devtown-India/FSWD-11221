@@ -4,6 +4,7 @@ const todoRoutes = require('./routes/todo')
 const app = express()
 const PORT = 8080
 
+app.use(express.json())
 app.use('/todos',todoRoutes)
 
 app.listen(PORT,()=>{
