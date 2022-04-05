@@ -76,4 +76,31 @@ router.get('/', (req, res) => {
     }
 })
 
+/*
+TYPE: DELETE
+DESCRIPTION: Route to delete a Todo Item
+BODY: null
+PARAMS: ID
+*/
+router.delete("/:id", (req, res) => {
+    try {   
+        const {id} = req.params
+        const todos = JSON.parse(fs.readFileSync(dbPath))
+        fs.writeFileSync(dbPath, JSON.stringify(todos.filter(todo=>todo.id!=id)))
+        res.json({
+            todo:null,
+            message: "todo deleted successfully",
+            success: true
+        })
+
+    } catch (error) {
+        console.log(error)
+        return res.json({
+            todo: null,
+            message: error.message,
+            success: false
+        })
+    }
+});
+
 module.exports = router
