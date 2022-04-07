@@ -29,18 +29,23 @@ const Todos = () => {
         getTodos()
     },[])
 
+    const isAuthenticated = true
+
     return ( 
         <div>
-            <h1>Todos</h1>
-            <AddTodo getTodos={getTodos}/>
-            <ol>
-                {todos.map(todo=>(
-                    <li key={todo.id}>
-                        {todo.text} {"    "}
-                        <button onClick={() => handleDelete(todo.id)} >Delete</button>
-                    </li>
-                ))}
-            </ol>
+           {isAuthenticated?(<>
+                <h1>Todos</h1>
+                <AddTodo getTodos={getTodos} />
+                <ol>
+                    {todos.map(todo => (
+                        <li key={todo.id}>
+                            {todo.text} {"    "}
+                            <button onClick={() => handleDelete(todo.id)} >Delete</button>
+                        </li>
+                    ))}
+                </ol>
+           
+           </>):"Login to continue"}
         </div>
      );
 }
