@@ -22,7 +22,7 @@ router.post('/',async(req,res)=>{
         const token = jwt.sign({
             email
         },SECRET,{
-            expiresIn:30
+            expiresIn:30000
         })
 
         res.json({

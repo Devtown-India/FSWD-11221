@@ -10,7 +10,11 @@ const Todos = () => {
 
     const getTodos = async ()=>{
         try {
-            const {data:{todos}} = await axios.get('http://localhost:8080/todos')
+            const {data:{todos}} = await axios.get('http://localhost:8080/todos',{
+                headers:{
+                    "Auth":`bearer ${token}`
+                }
+            })
             setTodos(todos)
         } catch (error) {
             console.log(error.message)
@@ -32,7 +36,7 @@ const Todos = () => {
             setToken(localStorage.getItem('auth_token'))
         }
         getTodos()
-    },[])
+    },[token])
 
 
     const isAuthenticated = true
@@ -48,7 +52,7 @@ const Todos = () => {
                 <h1>Todos</h1>
                 <AddTodo getTodos={getTodos} />
                 <ol>
-                    {todos.map(todo => (
+                    {todos&&todos.map(todo => (
                         <li key={todo.id}>
                             {todo.text} {"    "}
                             <button onClick={() => handleDelete(todo.id)} >Delete</button>

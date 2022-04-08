@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const { v4: uuidv4 } = require('uuid')
 const fs = require('fs')
+const jwt = require('jsonwebtoken') 
 
 const router = express.Router()
 
@@ -56,15 +57,30 @@ TYPE: GET
 DESCRIPTION: Route to get all Todo Items
 BODY: null
 */
+const SECRET = 'TOp_Secret_code'
+
 router.get('/', (req, res) => {
     try {
-
-        const todos = JSON.parse(fs.readFileSync(dbPath))
-        res.json({
-            todos,
-            message:"todos fetched successfully",
-            success: true
+        const auth = req.headers['auth']
+        const token = auth?.split(' ')[1]
+        console.log(token)
+        if (auth){
+            if (jwt.verify(token, SECRET)) {
+                const todos = JSON.parse(fs.readFileSync(dbPath))
+                return res.json({
+                    todos,
+                    message: "todos fetched successfully",
+                    success: true
+                })
+            }
+        }
+      
+        return res.json({
+            todos:null,
+            message: "UnAUthorised",
+            success: false
         })
+      
        
     } catch (error) {
         console.log(error)
