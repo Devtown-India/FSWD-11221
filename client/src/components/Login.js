@@ -1,5 +1,6 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router"
 
 
 
@@ -12,11 +13,21 @@ const Login = () => {
         e.preventDefault()
         try {
             const { data: { token, success }} = await axios.post('http://localhost:8080/auth',{email,password})
-            console.log(token)
+            localStorage.setItem('auth_token',token)
+            navigate('/')
+
         } catch (error) {
             console.log(error.message)
         }
     }
+
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(localStorage.getItem('auth_token')){
+            navigate('/')
+        }
+    },[])
 
     return ( 
         <div>

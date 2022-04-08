@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import AddTodo from "./AddTodo";
 
 const Todos = () => {
 
-
     const [todos,setTodos] = useState([])
+    const [token,setToken] = useState(null);
 
     const getTodos = async ()=>{
         try {
@@ -25,11 +26,21 @@ const Todos = () => {
         }
     }
 
+
     useEffect(()=>{
+        if(localStorage.getItem('auth_token')){
+            setToken(localStorage.getItem('auth_token'))
+        }
         getTodos()
     },[])
 
+
     const isAuthenticated = true
+
+    const navigate = useNavigate()
+    if(!token){
+        navigate('/login')
+    }
 
     return ( 
         <div>
