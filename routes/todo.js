@@ -21,7 +21,6 @@ BODY: {
 router.post('/', async (req,res)=>{
     try {
         const { text } = req.body
-        const todos = JSON.parse(fs.readFileSync(dbPath))
         if(text){
         
             const todo = new Todo({
@@ -61,27 +60,16 @@ BODY: null
 */
 const SECRET = 'TOp_Secret_code'
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const auth = req.headers['auth']
-        const token = auth?.split(' ')[1]
-        console.log(token)
-        if (auth){
-            if (jwt.verify(token, SECRET)) {
-                const todos = JSON.parse(fs.readFileSync(dbPath))
+            
+        const todos = await Todo.find({})
                 return res.json({
                     todos,
                     message: "todos fetched successfully",
                     success: true
                 })
-            }
-        }
       
-        return res.json({
-            todos:null,
-            message: "UnAUthorised",
-            success: false
-        })
       
        
     } catch (error) {
@@ -100,11 +88,10 @@ DESCRIPTION: Route to delete a Todo Item
 BODY: null
 PARAMS: ID
 */
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {   
         const {id} = req.params
-        const todos = JSON.parse(fs.readFileSync(dbPath))
-        fs.writeFileSync(dbPath, JSON.stringify(todos.filter(todo=>todo.id!=id)))
+        const todo = await Todo.findOneAndDelete({_id:id})
         res.json({
             todo:null,
             message: "todo deleted successfully",
