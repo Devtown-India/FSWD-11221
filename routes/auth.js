@@ -62,20 +62,41 @@ router.post('/',async(req,res)=>{
         const {email,password} = req.body
         console.log({ email, password })
 
-        const token = jwt.sign({
-            email
-        },SECRET,{
-            expiresIn:30000
-        })
+        const user = await User.findOne({email})
+        console.log(user)
+        if(user){
+            const isVerified = await bcrypt.compare(password,user.password)
+            if(isVerified){
+                const token = jwt.sign({
+                    email
+                }, SECRET, {
+                    expiresIn: 30000
+                })
 
-        res.json({
-            token,
-            message: "token created successfully",
-            success: true
+                return res.json({
+                    token,
+                    message: "token created successfully",
+                    success: true
+                })
+            }
+            return res.json({
+                token:null,
+                message: "Invalid password",
+                success: false
+            })
+
+           
+        }
+
+        return res.json({
+            token:null,
+            message: "User doesn't exist",
+            success: false
         })
+      
 
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
         return res.json({
             token: null,
             message: error.message,
