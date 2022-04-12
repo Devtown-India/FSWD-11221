@@ -3,6 +3,7 @@ const path = require('path')
 const { v4: uuidv4 } = require('uuid')
 const fs = require('fs')
 const jwt = require('jsonwebtoken') 
+const Todo = require('../services/mongodb/models/Todo')
 
 const router = express.Router()
 
@@ -17,19 +18,20 @@ BODY: {
 }
 */
 
-router.post('/',(req,res)=>{
+router.post('/', async (req,res)=>{
     try {
         const { text } = req.body
         const todos = JSON.parse(fs.readFileSync(dbPath))
         if(text){
-            const todo = {
-                id: uuidv4(),
+        
+            const todo = new Todo({
                 text,
-                isPending: true,
-                date: Date.now()
-            }
-            todos.push(todo)
-            fs.writeFileSync(dbPath,JSON.stringify(todos))
+                isPending:true,
+                date: Date.now(),
+            })
+
+            await todo.save()
+       
             return res.json({
                 todo,
                 message: "Todo added",
