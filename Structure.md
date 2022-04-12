@@ -9,6 +9,13 @@ Todo
 Todos
     - [ Todo ]
 
+User 
+    - firstName
+    - lastName
+    - contact (Number)
+    - email (String)
+    - password (String)
+
 
 ## API
 
